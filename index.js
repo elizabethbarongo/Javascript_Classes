@@ -111,6 +111,57 @@ const myOrder = new Order(
   console.log("Urgency:", urgency);
   
 
+
+
+
+//   QUESTION FIVE
+
+function Course(title, instructor, students) {
+  this.title = title;
+  this.instructor = instructor;
+  this.students = students;
+}
+
+Course.prototype.completedStudents = function() {
+  return this.students
+    .filter(student => student.completionStatus === 'finished')
+    .map(student => student.name);
+};
+
+Course.prototype.countByExpertise = function(expertiseArea) {
+  if (this.instructor.expertise === expertiseArea) {
+    return this.students.length;
+  } else {
+    return 0;
+  }
+};
+
+Course.prototype.instructorMessage = function() {
+  if (this.students.length >= 5) {
+    return "Great job! You have a full class.";
+  } else {
+    return "You can enroll more students.";
+  }
+};
+
+const program =new Course(
+  "Fashion",
+  {name:"Mary", completionStatus:"finished"},
+  [{name:"Kate", completionStatus:'finished'}]
+);
+
+console.log(program)
+
+
+console.log(program.completedStudents());
+
+
+console.log(program.instructorMessage());
+
+
+console.log(program.countByExpertise("Fashion"));
+
+
   
 
 //   QUESTION FOUR
@@ -150,47 +201,25 @@ function Employee(id, name, performanceMetrics, feedback) {
   };
 
 
-//   QUESTION FIVE
-
-function Course(title, instructor, students) {
-    this.title = title;
-    this.instructor = instructor;
-    this.students = students;
-  }
-  
-  Course.prototype.completedStudents = function() {
-    return this.students
-      .filter(student => student.completionStatus === true)
-      .map(student => student.name);
-  };
-  
-  Course.prototype.countByExpertise = function(expertiseArea) {
-    if (this.instructor.expertise === expertiseArea) {
-      return this.students.length;
-    } else {
-      return 0;
-    }
-  };
-  
-  Course.prototype.instructorMessage = function() {
-    if (this.students.length >= 5) {
-      return "Great job! You have a full class.";
-    } else {
-      return "You can enroll more students.";
-    }
-  };
-
-  const program =new Course(
-    "Fashion",
-    [{name:"Mary", completionStatus:"finished"}]
-);
-  
-console.log(program)
+  const worker = new Employee(
+    1,
+    "Mark",
+    [{ communication: 9, efficiency:8, reliability:7}]
+     
+     
+     
+    
+  );
 
 
-const students= program.completedStudents();
-console.log("Completed students:",students);
+  console.log(worker)
 
+  console.log(worker.averageScore());
 
+// worker.addFeedback("This is great");
 
+// console.log(worker.feedback);
 
+console.log(worker.performanceLevel())
+
+console.log("Feedback:",worker.feedback)
