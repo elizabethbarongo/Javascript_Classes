@@ -21,7 +21,6 @@ function TimeLog(freelancerName,projectDetails,logs){
     this.logs=logs;
 }
 
-const timelog= new TimeLog("John","")
 
 TimeLog.prototype.totalEarnings=function(){
     let total=0;
@@ -150,7 +149,7 @@ function Employee(id, name, performanceMetrics, feedback) {
     }
   };
 
-  
+
 //   QUESTION FIVE
 
 function Course(title, instructor, students) {
@@ -180,4 +179,18 @@ function Course(title, instructor, students) {
       return "You can enroll more students.";
     }
   };
+
+  const program =new Course(
+    "Fashion",
+    [{name:"Mary", completionStatus:"finished"}]
+);
   
+console.log(program)
+
+
+const students= program.completedStudents();
+console.log("Completed students:",students);
+
+
+
+
